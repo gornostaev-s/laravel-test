@@ -23,6 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/tasks', TaskController::class)->middleware('auth:sanctum')->only([
-    'index', 'show', 'store', 'update', 'destroy'
+Route::resource('/tasks', TaskController::class)->middleware(['auth:sanctum'])->only([
+    'index', 'store'
+]);
+
+Route::resource('/tasks', TaskController::class)->middleware(['auth:sanctum', 'check.own.task'])->only([
+    'show','update', 'destroy'
 ]);

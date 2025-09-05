@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->bigInteger('user_id')->unsigned();
             $table->string('title', 255)->nullable(false);
-            $table->string('description', 255);
+            $table->string('description', 255)->nullable();
             $table->string('status', 255);
             $table->timestamp('due_date');
 
