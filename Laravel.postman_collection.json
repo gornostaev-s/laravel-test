@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "f896a9d7-735f-417b-9b72-afac8f83e33d",
+		"name": "Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13060633"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"root@example.com\",\n    \"password\": \"123edcxzaq\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://admin.laravel.test/api/login",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"user\",\n    \"email\": \"user@example.com\",\n    \"password\": \"123edcxzaq\",\n    \"password_confirmation\": \"123edcxzaq\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://admin.laravel.test/api/register",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|wsSf0gx2CFJxHHb5jyH1Rp2pgVrIpBX0py9lNMOLb270203d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://admin.laravel.test/api/tasks?status=pending&sort=due_date&sort_direction=ASC&due_date=2025-09-05",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "pending"
+						},
+						{
+							"key": "sort",
+							"value": "due_date"
+						},
+						{
+							"key": "sort_direction",
+							"value": "ASC"
+						},
+						{
+							"key": "due_date",
+							"value": "2025-09-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|wsSf0gx2CFJxHHb5jyH1Rp2pgVrIpBX0py9lNMOLb270203d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Тестовая задача 2\",\n    \"status\": \"pending\",\n    \"due_date\": \"2025-09-05 16:04:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://admin.laravel.test/api/tasks",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|wsSf0gx2CFJxHHb5jyH1Rp2pgVrIpBX0py9lNMOLb270203d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Сходить в магазин\",\n    \"status\": \"done\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://admin.laravel.test/api/tasks/3",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|wsSf0gx2CFJxHHb5jyH1Rp2pgVrIpBX0py9lNMOLb270203d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://admin.laravel.test/api/tasks/101",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"101"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
