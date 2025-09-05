@@ -13,24 +13,24 @@ use Illuminate\Validation\ValidationException;
 
 class UserService
 {
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request): ?string
     {
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('api-token')->plainTextToken; // Создание токена
+            // Создание токена
 
-            return response()->json(['token' => $token], 200);
+            return $user->createToken('api-token')->plainTextToken;
         }
 
         throw ValidationException::withMessages(['Неверный логин или пароль']);
     }
 
-    public function registration(RegisterRequest $request)
+    public function register(RegisterRequest $request): ?User
     {
         // Создание нового пользователя
-        $user = User::create([
+        return User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Хеширование пароля
