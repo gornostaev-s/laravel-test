@@ -50,12 +50,9 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task): Task
+    public function show(Task $task): TaskResource
     {
-        return Task::findOrFail([
-            'id' => $task->id,
-            'user_id' => Auth::id()
-        ]);
+        return new TaskResource($task);
     }
 
     /**
