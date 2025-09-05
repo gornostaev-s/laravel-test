@@ -127,6 +127,49 @@
 			"response": []
 		},
 		{
+			"name": "Get task",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3|wsSf0gx2CFJxHHb5jyH1Rp2pgVrIpBX0py9lNMOLb270203d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://admin.laravel.test/api/tasks/3",
+					"protocol": "http",
+					"host": [
+						"admin",
+						"laravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create task",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
