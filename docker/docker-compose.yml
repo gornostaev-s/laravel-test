@@ -1,0 +1,44 @@
+version: '2'
+services:
+  nginx:
+    container_name: nginx-laravel
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./containers/nginx:/etc/nginx/conf.d
+      - ./../:/var/www
+      - ./logs/nginx:/var/log/nginx
+    links:
+      - php
+    env_file:
+      - ../.env
+  php:
+    container_name: php-laravel
+    build: ./containers/php
+    links:
+      - mysql
+    volumes:
+      - ./../:/var/www
+      - ./containers/php/supervisor/:/etc/supervisor/conf.d/
+    env_file:
+      - ../.env
+  mysql:
+    container_name: mysql-laravel
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./logs/mysql/mysql.log:/var/log/mysql.log
+    env_file:
+      - ../.env
+  redis:
+    image: redis:6.2
+    container_name: redis-laravel
+    restart: unless-stopped
+    volumes:
+      - redis-laravel:/data
+volumes:
+  redis-laravel:
