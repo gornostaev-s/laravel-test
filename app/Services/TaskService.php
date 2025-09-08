@@ -14,10 +14,8 @@ class TaskService
 {
     public function create(TaskCreateRequest $request): ?Task
     {
-        /** @var User $user */
-        $user = Auth::user();
         $task = Task::factory()->make($request->validated());
-        $task->user_id = $user->id;
+        $task->user_id = Auth::id();
         $task->save();
 
         return $task;
