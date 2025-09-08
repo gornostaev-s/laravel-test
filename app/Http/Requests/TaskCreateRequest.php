@@ -21,7 +21,7 @@ class TaskCreateRequest extends FormRequest
             'title' => 'required|min:3',
             'description' => 'string|max:255',
             'status' => Rule::enum(TaskStatusEnum::class),
-            'due_date' => 'required|date|after_or_equal:now',
+            'due_date' => 'required|date|after_or_equal:today',
         ];
     }
 }

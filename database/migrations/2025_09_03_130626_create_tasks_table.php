@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title', 255)->nullable(false);
             $table->string('description', 255)->nullable();
             $table->string('status', 255);
-            $table->timestamp('due_date')->nullable();
+            $table->date('due_date')->nullable();
 
             $table
                 ->foreign(['user_id'], 'fk-tasks_users')
