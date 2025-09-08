@@ -26,7 +26,7 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(TaskFilter $filter): \Illuminate\Support\Collection
+    public function index(TaskListRequest $request, TaskFilter $filter): \Illuminate\Support\Collection
     {
         return Task::filter($filter)
             ->with('user')
